@@ -227,3 +227,4 @@ This data dictionary documents all columns used in the Mutual Fund Analytics pro
 | close_value | REAL      | Closing value of the benchmark index on the specified date. | clean_benchmark.csv |
 
 
+
