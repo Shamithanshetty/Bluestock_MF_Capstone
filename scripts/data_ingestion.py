@@ -1,32 +1,54 @@
-import pandas as pd
+
+"""
+Data ingestion module for the  Mutual Fund Analytics project.
+
+This module discovers CSV files from the data/raw directory,
+loads each dataset using Pandas and displays basic information
+about the datasets.
+"""
+
 import glob
 import os
 
-# Find the project folder
-project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+import pandas as pd
 
-# Find all CSV files in data/raw
-csv_path = os.path.join(project_root, "data", "raw", "*.csv")
-csv_files = glob.glob(csv_path)
 
-print("Number of CSV files found:", len(csv_files))
+def data_ingestion():
+    """
+    Load all CSV files from the data/raw directory.
 
-for file in csv_files:
-    print("\nFile:", os.path.basename(file))
+    For each dataset, display its shape, data types, and
+    first five rows.
 
-    df = pd.read_csv(file)
+    Returns
+    -------
+    None
+    """
 
-    print("\nShape:")
-    print(df.shape)
+    # Find the project folder
+    project_root = os.path.dirname(
+        os.path.dirname(os.path.abspath(__file__))
+    )
 
-    print("\nData Types:")
-    print(df.dtypes)
+    # Find all CSV files in data/raw
+    csv_path = os.path.join(project_root, "data", "raw", "*.csv")
+    csv_files = glob.glob(csv_path)
 
-    print("\nFirst 5 Rows:")
-    print(df.head())
+    for file in csv_files:
+        print("\nFile:", os.path.basename(file))
 
-    print("\nMissing Values:")
-    print(df.isnull().sum())
+        df = pd.read_csv(file)
 
-    print("\nDuplicate Rows:")
-    print(df.duplicated().sum())
+        print("\nShape:")
+        print(df.shape)
+
+        print("\nData Types:")
+        print(df.dtypes)
+
+        print("\nFirst 5 Rows:")
+        print(df.head())
+
+
+if __name__ == "__main__":
+    data_ingestion()
+

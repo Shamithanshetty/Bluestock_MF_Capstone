@@ -1,3 +1,6 @@
+""" Fetch HDFC Top 100 mutual fund NAV data from the MFAPI REST API. This module retrieves NAV data using the 
+AMFI scheme code 125497 and saves the result as a CSV file in the data/raw directory. """
+
 import requests
 import pandas as pd
 

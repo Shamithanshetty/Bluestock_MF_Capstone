@@ -1,3 +1,6 @@
+""" Live NAV data fetching module for the Mutual Fund Analytics project. This module fetches 
+mutual fund NAV data from the MFAPI REST API for selected mutual fund schemes and saves the data as CSV files. """
+
 import requests
 import pandas as pd
 
@@ -10,6 +13,8 @@ schemes = {
 }
 
 for name, code in schemes.items():
+    """ Fetch NAV data for each selected mutual fund scheme using its 
+    AMFI scheme code. """
 
     url = "https://api.mfapi.in/mf/" + code
 
